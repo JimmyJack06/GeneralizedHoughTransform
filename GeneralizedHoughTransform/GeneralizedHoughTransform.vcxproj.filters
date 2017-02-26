@@ -14,4 +14,35 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="animals.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="animals2.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="block.tif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="letters.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="template_bear.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="template_elephant.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="template_Q.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="template_K.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
