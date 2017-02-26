@@ -1,15 +1,28 @@
-#include <opencv2\core\core.hpp>
-#include <opencv2\highgui\highgui.hpp>
-#include <opencv2\imgproc\imgproc.hpp>
+﻿#include <iostream>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
-int main()
+#include "GeneralizedHoughTransform.hpp"
+
+using namespace std;
+using namespace cv;
+
+int main() 
 {
-	auto image = cv::imread("letters.png", cv::IMREAD_COLOR);
-	cv::Mat intermediate;
-	cv::Canny(image, intermediate, 80, 90);
+	Mat tpl = imread("template_Q.png");
+	imshow("template", tpl);
+	Mat src = imread("letters.png");
+	imshow("source", src);
 
-	cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE);
-	cv::imshow("Canny", intermediate);
-	cv::waitKey(0);
+	GeneralHoughTransform ght(tpl);
+
+	/*Size s(src.size().width / 4, src.size().height / 4);
+	resize(src, src, s, 0, 0, CV_INTER_AREA);
+*/
+	//imshow("debug - image", src);
+
+	ght.accumulate(src);
+	waitKey(0);
 	return 0;
 }
+
