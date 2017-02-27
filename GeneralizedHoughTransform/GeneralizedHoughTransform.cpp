@@ -11,14 +11,14 @@ using namespace std;
 GeneralHoughTransform::GeneralHoughTransform(const Mat& templateImage)
 {
 	/* Parameters to set */
-	m_cannyThreshold1 = 40;
-	m_cannyThreshold2 = 60;
+	m_cannyThreshold1 = 60;
+	m_cannyThreshold2 = 100;
 	m_deltaScaleRatio = 0.01;
-	m_minScaleRatio = 1.0;
-	m_maxScaleRatio = 1.0;
+	m_minScaleRatio = 1.5;
+	m_maxScaleRatio = 1.5;
 	m_deltaRotationAngle = PI / 48;
-	m_minRotationAngle = -.35;
-	m_maxRotationAngle = -.05;
+	m_minRotationAngle = .5;
+	m_maxRotationAngle = .5;
 
 	/* Computed attributes */
 	m_nRotations = (m_maxRotationAngle - m_minRotationAngle) / m_deltaRotationAngle + 1;
@@ -239,6 +239,6 @@ void GeneralHoughTransform::drawTemplate(Mat& image, GHTPoint params)
 	double s = sin(params.phi);
 	int x(0), y(0), relx(0), rely(0);
 
-	cv::Rect rect{ params.y.x - m_templateImage.rows/2, params.y.y - m_templateImage.cols/2, m_templateImage.rows, m_templateImage.cols };
+	cv::Rect rect{ params.y.x - static_cast<int>((m_templateImage.rows/2)*m_maxScaleRatio), params.y.y - static_cast<int>((m_templateImage.cols/2)*m_maxScaleRatio), static_cast<int>(m_templateImage.rows*m_maxScaleRatio), static_cast<int>(m_templateImage.cols * m_maxScaleRatio) };
 	cv::rectangle(image, rect, cv::Scalar{ 0, 0, 255, 255 }, 3);
 }

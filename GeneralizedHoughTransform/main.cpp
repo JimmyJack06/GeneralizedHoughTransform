@@ -9,9 +9,9 @@ using namespace cv;
 
 int main() 
 {
-	Mat tpl = imread("template_Q.png");
+	Mat tpl = imread("template_elephant.png");
 	imshow("template", tpl);
-	Mat src = imread("letters.png");
+	Mat src = imread("animals2.jpg");
 	imshow("source", src);
 
 	GeneralHoughTransform ght(tpl);
